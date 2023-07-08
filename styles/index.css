@@ -123,9 +123,11 @@ body {
   color: white;
 }
 
-.NCM-not-found {
-  font-weight: bold;
-  
+.NCM-not-found{
+  display: block;
+  width: 100% ;
+
+  font-weight: bold ;
   text-align: center;
 }
 
@@ -140,4 +142,8 @@ body {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+.custom {
+  background-color: red;
 }

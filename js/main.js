@@ -1,4 +1,4 @@
-import { Tbody, Pagination } from './components.mjs'
+import { Tbody, Pagination, NCMNotFound } from './components.mjs'
 import { filterNCMs } from './filter.mjs'
 import { sanitizeHTML } from './sanitizeHTML.mjs'
 
@@ -54,6 +54,9 @@ function main() {
       NCMTbody.textContent = sanitizeHTML('')
 
       Pagination(totalPages, currentPage, goToPage)
+
+      if(filteredNCMs.length === 0) NCMTbody.appendChild(NCMNotFound())
+      
 
       Tbody(filteredNCMs, 0, itemsPerPage)
     }
