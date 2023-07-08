@@ -22,7 +22,15 @@ const Tr = (name, NCMcode) => {
 }
 
 export const Tbody = (data, start, end) => data.length > 0 && data.slice(start, end).map(({ name, code }) => {
-  NCMTbody.appendChild(Tr(name, code))
+  const fragment = document.createDocumentFragment()
+
+  const slicedData = data.slice(start, end)
+
+  for (const { name, code } of slicedData) {
+    fragment.appendChild(Tr(name, code));
+  }
+
+  NCMTbody.appendChild(fragment)
 })
 
 export const  Pagination = (totalPages, currentPage, callback) => {
