@@ -1,5 +1,6 @@
 import { Tbody, Pagination } from './components.mjs'
 import { filterNCMs } from './filter.mjs'
+import { sanitizeHTML } from './sanitizeHTML.mjs'
 
 function main() {
 
@@ -50,7 +51,7 @@ function main() {
 
       currentPage = 1
 
-      NCMTbody.innerHTML = ''
+      NCMTbody.innerHTML = sanitizeHTML('')
 
       Pagination(totalPages, currentPage, goToPage)
 
@@ -74,7 +75,7 @@ function main() {
       const start = currentPage > 1 ? (currentPage - 1) * itemsPerPage : 0
       const end = start + itemsPerPage
 
-      NCMTbody.innerHTML = ''
+      NCMTbody.innerHTML = sanitizeHTML('')
 
       Tbody(filteredNCMs, start, end)
 

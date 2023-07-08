@@ -1,10 +1,12 @@
+import { sanitizeHTML } from "./sanitizeHTML.mjs"
+
 const Tr = (name, NCMcode) => {
   const tr = document.createElement('tr')
   const description = document.createElement('td')
   const code = document.createElement('td')
 
-  description.innerHTML = name
-  code.textContent = NCMcode
+  description.textContent = sanitizeHTML(name)
+  code.textContent = sanitizeHTML(NCMcode)
 
   tr.appendChild(description)
   tr.appendChild(code)
@@ -36,7 +38,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   for (let i = startPage; i <= endPage; i++) {
     const button = document.createElement('button')
 
-    button.innerText = i
+    button.innerText = sanitizeHTML(i)
     button.title = `Ir para a página ${i}`
 
     if (i === currentPage) {
@@ -53,7 +55,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   // Botão 'Anterior'
   if (startPage > 1) {
     const previousButton = document.createElement('button')
-    previousButton.innerText = 'Anterior'
+    previousButton.innerText = sanitizeHTML('Anterior')
     previousButton.setAttribute('aria-disabled', 'false')
 
     previousButton.addEventListener('click', () => {
@@ -66,7 +68,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   // Botão 'Próximo'
   if (endPage < totalPages) {
     const nextButton = document.createElement('button')
-    nextButton.innerText = 'Próximo'
+    nextButton.innerText = sanitizeHTML('Próximo')
     nextButton.setAttribute('aria-disabled', 'false')
 
     nextButton.addEventListener('click', () => {
