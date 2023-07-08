@@ -51,7 +51,7 @@ function main() {
 
       currentPage = 1
 
-      NCMTbody.innerHTML = sanitizeHTML('')
+      NCMTbody.textContent = sanitizeHTML('')
 
       Pagination(totalPages, currentPage, goToPage)
 
@@ -75,7 +75,7 @@ function main() {
       const start = currentPage > 1 ? (currentPage - 1) * itemsPerPage : 0
       const end = start + itemsPerPage
 
-      NCMTbody.innerHTML = sanitizeHTML('')
+      NCMTbody.textContent = sanitizeHTML('')
 
       Tbody(filteredNCMs, start, end)
 

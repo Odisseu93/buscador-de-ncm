@@ -1,5 +1,7 @@
 import { sanitizeHTML } from "./sanitizeHTML.mjs"
 
+const paginationContainer = document.getElementById('pagination')
+
 const Tr = (name, NCMcode) => {
   const tr = document.createElement('tr')
   const description = document.createElement('td')
@@ -19,8 +21,7 @@ export const Tbody = (data, start, end) => data.length > 0 && [...data].slice(st
 })
 
 export const  Pagination = (totalPages, currentPage, callback) => {
-  const paginationContainer = document.getElementById('pagination')
-  paginationContainer.innerHTML = ''
+  paginationContainer.textContent = sanitizeHTML('')
 
   const maxVisiblePages = 5 // Número máximo de páginas visíveis
   const halfVisiblePages = Math.floor(maxVisiblePages / 2)
@@ -38,7 +39,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   for (let i = startPage; i <= endPage; i++) {
     const button = document.createElement('button')
 
-    button.innerText = sanitizeHTML(i)
+    button.textContent = sanitizeHTML(i)
     button.title = `Ir para a página ${i}`
 
     if (i === currentPage) {
@@ -55,7 +56,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   // Botão 'Anterior'
   if (startPage > 1) {
     const previousButton = document.createElement('button')
-    previousButton.innerText = sanitizeHTML('Anterior')
+    previousButton.textContent = sanitizeHTML('Anterior')
     previousButton.setAttribute('aria-disabled', 'false')
 
     previousButton.addEventListener('click', () => {
@@ -68,7 +69,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   // Botão 'Próximo'
   if (endPage < totalPages) {
     const nextButton = document.createElement('button')
-    nextButton.innerText = sanitizeHTML('Próximo')
+    nextButton.textContent = sanitizeHTML('Próximo')
     nextButton.setAttribute('aria-disabled', 'false')
 
     nextButton.addEventListener('click', () => {
