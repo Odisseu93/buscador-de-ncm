@@ -11,7 +11,7 @@ const Tr = (name, NCMcode) => {
 
   description.classList.add('description')
   description.textContent = sanitizeHTML(name)
-  
+
   code.classList.add('code')
   code.textContent = sanitizeHTML(NCMcode)
 
@@ -21,7 +21,7 @@ const Tr = (name, NCMcode) => {
   return tr
 }
 
-export const Tbody = (data, start, end) => data.length > 0 && [...data].slice(start, end).map(({ name, code }) => {
+export const Tbody = (data, start, end) => data.length > 0 && data.slice(start, end).map(({ name, code }) => {
   NCMTbody.appendChild(Tr(name, code))
 })
 
