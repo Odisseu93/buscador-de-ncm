@@ -1,5 +1,7 @@
 # Buscador de NCM
 
+<a href="https://buscador-de-ncm.vercel.app/" target="_blank" alt="link para a página">Acesso à Página &#128279;</a>
+
 Este projeto consiste em uma tabela de códigos NCM (Nomenclatura Comum do Mercosul) com recursos de paginação e filtro. A tabela exibe os códigos NCM e suas descrições correspondentes, permitindo que o usuário pesquise e filtre os códigos de acordo com suas necessidades.
 
 ## Funcionalidades
