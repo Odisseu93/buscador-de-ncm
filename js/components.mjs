@@ -92,3 +92,14 @@ export const  Pagination = (totalPages, currentPage, callback) => {
     paginationContainer.appendChild(nextButton)
   }
 }
+
+
+export const NCMNotFound = () => {
+  const p = document.createElementNS('https://www.w3.org/1999/xhtml', 'p')
+
+  p.classList.add('NCM-not-found')
+  p.textContent= 'NCM não encontrado!'
+
+  return p
+}
+
