@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Esta página apresenta uma tabela de códigos NCM (Nomenclatura Comum do Mercosul) com recursos de paginação e pesquisa.
+   Você pode pesquisar por palavras-chave para filtrar os códigos NCM exibidos na tabela.
+  A tabela é paginada, permitindo que você navegue entre as páginas de resultados.">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="./styles/index.css">
+  
+  <title>Buscador de NCM</title>
+</head>
+
+<body>
+  <h1 class="title">Buscador de NCM <small class="ncm-small">Nomenclatura Comum do Mercosul</small></h1>
+
+  <main class="main">
+    <div class="search-container">
+      <input type="search" id="search" class="search-input" placeholder="Digite uma nomenclatura...">
+    </div>
+
+    <table class="NCM-table">
+      <thead>
+        <tr>
+          <th>
+            Descrição
+          </th>
+          <th>
+            Código
+          </th>
+        </tr>
+      </thead>
+
+      <tbody id="NCMTbody">
+
+      </tbody>
+    </table>
+  </main>
+  <div id="pagination" class="pagination" aria-label="Paginação"></div>
+  <footer class="footer">
+    <p>Desenvolvido Por <a href="http://github.com/odisseu93" target="_blank" rel="noopener noreferrer">Ulisses
+        Silvério</a></p>
+  </footer>
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+
+</html>

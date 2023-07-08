@@ -1,0 +1,143 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.title {
+  display: flex;
+  flex-flow: column wrap;
+
+  margin-left: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.ncm-small {
+  font-size: 1rem;
+}
+
+.main {
+  height: 80vh;
+}
+
+.search-container { 
+  width: clamp(200px, 90%, 270px);
+
+  margin: 0 auto;
+  padding: 0.25rem;
+}
+
+.search-input { 
+  width: 100%;  
+
+  border: none;
+  padding: 0 4px; 
+
+  font-size: 1.25rem;   
+  box-shadow: 1px 5px 1px #000;
+}
+
+.NCM-table {
+  display: block;
+
+  width: clamp(375px, 100%, 600px);
+  height: 75%;
+
+  padding: 1rem;
+  margin: 3rem auto; 
+
+  font-size: 1.25rem; 
+  overflow-y: scroll;
+}
+
+.NCM-table thead {
+  background-color: #FFF;
+
+  position: sticky; 
+  top: -14px;
+
+  width: 90%;
+ 
+  padding: 0.25rem;
+}
+
+.NCM-table th {
+  width: 90%;
+
+  padding: 0.25rem;
+  outline: 2px solid #000;
+}
+
+.NCM-table tbody {
+  width: 90%;
+
+  padding: 0.25rem;
+  outline: 2px solid #000;
+}
+
+.NCM-table tbody td {
+  padding: 0.25rem;
+
+  outline: 1px solid #000;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  position: relative ;
+  bottom: 1rem;  
+
+  margin: 0 auto;
+
+  font-size: 1rem;
+}
+
+.pagination button {
+  background-color: #f2f2f2;
+
+  margin: 0 5px;
+  padding: 5px 10px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: rgb(27, 106, 203);
+  color: white;
+}
+
+.NCM-not-found {
+  font-weight: bold;
+  
+  text-align: center;
+}
+
+.footer {
+  margin-left: 1rem;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+
+.footer a:hover {
+  text-decoration: underline;
+}
