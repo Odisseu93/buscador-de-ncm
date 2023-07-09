@@ -3,9 +3,9 @@ import { sanitizeHTML } from "./sanitizeHTML.mjs"
 const paginationContainer = document.getElementById('pagination')
 
 const Tr = (name, NCMcode) => {
-  const tr = document.createElementNS('http://www.w3.org/1999/xhtml', 'tr')
-  const description = document.createElementNS('http://www.w3.org/1999/xhtml', 'td')
-  const code = document.createElementNS('http://www.w3.org/1999/xhtml','td')
+  const tr = document.createElement( 'tr')
+  const description = document.createElement( 'td')
+  const code = document.createElement('td')
 
   tr.classList.add('table-row')
 
@@ -50,7 +50,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
   }
 
   for (let i = startPage; i <= endPage; i++) {
-    const button = document.createElementNS('https://www.w3.org/1999/xhtml', 'button')
+    const button = document.createElement('button')
 
     button.textContent = sanitizeHTML(i)
     button.title = `Ir para a página ${i}`
@@ -68,7 +68,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
 
   // Botão 'Anterior'
   if (startPage > 1) {
-    const previousButton = document.createElementNS('https://www.w3.org/1999/xhtml', 'button')
+    const previousButton = document.createElement('button')
     previousButton.textContent = sanitizeHTML('Anterior')
     previousButton.setAttribute('aria-disabled', 'false')
 
@@ -81,7 +81,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
 
   // Botão 'Próximo'
   if (endPage < totalPages) {
-    const nextButton = document.createElementNS('https://www.w3.org/1999/xhtml', 'button')
+    const nextButton = document.createElement('button')
     nextButton.textContent = sanitizeHTML('Próximo')
     nextButton.setAttribute('aria-disabled', 'false')
 
@@ -95,7 +95,7 @@ export const  Pagination = (totalPages, currentPage, callback) => {
 
 
 export const NCMNotFound = () => {
-  const p = document.createElementNS('https://www.w3.org/1999/xhtml', 'p')
+  const p = document.createElement('p')
 
   p.classList.add('NCM-not-found')
   p.textContent= 'NCM não encontrado!'
