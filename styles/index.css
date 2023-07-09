@@ -55,7 +55,7 @@ body {
 .NCM-table {
   display: block;
 
-  width: clamp(375px, 100%, 600px);
+  width: clamp(calc(375px - 32px), 100%, 600px);
   height: 75%;
 
   padding: 1rem;
