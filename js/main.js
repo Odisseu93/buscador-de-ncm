@@ -1,29 +1,33 @@
-import { Tbody, Pagination, NCMNotFound } from './components.mjs'
+import { Tbody, Pagination, NCMNotFound, LoadingSpinner } from './components.mjs'
 import { filterNCMs } from './filter.mjs'
 import { sanitizeHTML } from './sanitizeHTML.mjs'
+
 
 function main() {
 
   const NCMTbody = document.querySelector('#NCMTbody')
   const search = document.querySelector('#search')
 
+  NCMTbody.appendChild(LoadingSpinner({ isLoading: true }))
   const apiGetNCMs = async () => {
     try {
       const res = await fetch('https://brasilapi.com.br/api/ncm/v1')
       const json = await res.json()
-
+      
       return json
     } catch (err) {
       console.error(err)
     }
+    
   }
-
+  
   (async () => {
 
     const data = await apiGetNCMs()
     let NCMList = []
     let filteredNCMs = []
 
+    NCMTbody.appendChild(LoadingSpinner({ isLoading: false }))
 
     if (data) {
       data.length > 0 && data.map((ncm) => {
@@ -40,6 +44,7 @@ function main() {
     search.oninput = (e) => {
       let currentPage = 1
       const itemsPerPage = 10
+
 
       if (e.target.value !== '') {
         filteredNCMs = filterNCMs(NCMList, e.target.value)

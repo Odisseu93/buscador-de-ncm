@@ -103,3 +103,22 @@ export const NCMNotFound = () => {
   return p
 }
 
+// LoadingSpinner
+const spinnerContainer = document.createElement('div')
+const loadingSpinner = document.createElement('div')
+
+spinnerContainer.classList.add('spinner-container')
+loadingSpinner.classList.add('loading-spinner')
+
+spinnerContainer.appendChild(loadingSpinner)
+
+export const LoadingSpinner = ({ isLoading } = {
+  isLoading: false
+}) =>  {
+  isLoading ? 
+  spinnerContainer.style.display = 'block' :
+  spinnerContainer.style.display = 'none'
+
+  return spinnerContainer
+}
+//
