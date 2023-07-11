@@ -1,4 +1,4 @@
-export const Th  = `
+export const Td  = `
   width: 90%;
 
   padding: 0.25rem;
