@@ -1,15 +1,14 @@
-export const Footer =`
+export const Footer = `
 .footer {
+  display: flex;
+
   position: fixed;
-  bottom: 1rem;
-  margin-left: 1rem;
+  bottom: 0.5rem;
+  left: 1rem;
+  font-size: 1rem;
 }
 
-.footer a {
-  text-decoration: none;
-}
+.footer a {text-decoration: none;}
 
-.footer a:hover {
-  text-decoration: underline;
-}
+.footer a:hover {text-decoration: underline;}
 `
