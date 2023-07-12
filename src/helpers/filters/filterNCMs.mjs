@@ -1,4 +1,4 @@
 
-export const filterNCMs = (NCMList, targetWord) => NCMList.filter((ncm) => {
-  return ncm.name.toLowerCase().includes(targetWord.toLowerCase())
+export const filterNCMs = (NCMList, keyword) => NCMList.filter((ncm) => {
+  return ncm.descricao.toLowerCase().includes(keyword.toLowerCase())
 })
