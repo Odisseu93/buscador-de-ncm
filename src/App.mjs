@@ -65,7 +65,7 @@ export const App = () => {
     if(!thisHTMLElementExists('#loadingSpiner')) {
       updateComponent(
         document.querySelector('#root table tbody'),
-        fragment([Tbody(Tr(LoadingSpinner()))])
+        fragment([Tbody(LoadingSpinner())])
         )
     }
 
