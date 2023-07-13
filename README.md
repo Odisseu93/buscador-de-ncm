@@ -11,6 +11,9 @@ Este projeto consiste em uma tabela de códigos NCM (Nomenclatura Comum do Merco
 - Pesquisa de códigos NCM através de palavras-chave, filtrando os resultados em tempo real.
 - Responsividade para uma experiência de usuário agradável em dispositivos móveis.
 
+![image](https://github.com/Odisseu93/buscador-de-ncm/assets/76600539/5ae273d4-1196-4e5f-92f0-914c153b77fe)
+
+
 ## Tecnologias utilizadas
 
 - HTML
