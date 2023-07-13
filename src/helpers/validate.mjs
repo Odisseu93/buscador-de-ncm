@@ -5,4 +5,10 @@ const isHTML = (htmlString) => {
   return isValid
 }
 
-export { isHTML }
+/**
+ * @param element pass the selector as a parameter example: '#id', '.className', 'input' ...
+ */
+const thisHTMLElementExists = (element) => document.contains(document.querySelector(`${element}`))
+
+
+export { isHTML, thisHTMLElementExists }
