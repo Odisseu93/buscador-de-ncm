@@ -19,19 +19,9 @@ import { filterNCMs } from './helpers/filters/filterNCMs.mjs'
 
 export const App = () => {
 
-
   const tbodyLines = ({ liList = [] }) => {
     return liList.map((ncm) =>
-      Tr({
-        children: [
-          Td({
-            children: ncm.descricao,
-          }),
-          Td({
-            children: ncm.codigo,
-          }),
-        ].join(''),
-      })
+      Tr([Td(ncm.descricao), Td(ncm.codigo)].join(''))
     )
   }
 
@@ -43,7 +33,7 @@ export const App = () => {
       if (allNCMs) {
         if (!filter) {
           tbodyContent = WrapperHTML({
-            HTML: tbodyLines({ liList: allNCMs})
+            HTML: tbodyLines({ liList: allNCMs })
           })
         } else {
           if (filterNCMs(allNCMs, filter).length === 0) {
@@ -51,7 +41,7 @@ export const App = () => {
             updateComponent(
               document.querySelector('#root  table tbody'),
               WrapperHTML({
-                HTML: [Tbody({ children: Tr({ children: Td({ children: NotFound() }) }) })]
+                HTML: [Tbody(Tr(Td(NotFound())))]
               })
             )
             return
@@ -61,7 +51,7 @@ export const App = () => {
 
         updateComponent(document.querySelector('#root  table tbody'),
           WrapperHTML({
-            HTML: [Tbody({ children: tbodyContent })]
+            HTML: [Tbody(tbodyContent)]
           })
         )
         return
@@ -69,7 +59,7 @@ export const App = () => {
     }).catch(() => {
       updateComponent(document.querySelector('#root  table tbody'),
         WrapperHTML({
-          HTML: [Tbody({ children: Tr({ children: Td({ children: ApiRequestProblem() }) }) })]
+          HTML: [Tbody(Tr(Td(ApiRequestProblem())))]
         })
       )
     })
@@ -94,16 +84,15 @@ export const App = () => {
       [
         Title(),
         SearchInput({ onInput: handleSearchInput }),
-        Table({
-          children:
-            WrapperHTML({
-              HTML:
-                [
-                  Thead({ children: ['Descrição', 'Código'] }),
-                  Tbody({ children: Tr({ children: Td({ children: LoadingSpinner() }) }) })
-                ]
-            })
-        })
+        Table(
+          WrapperHTML({
+            HTML:
+              [
+                Thead(['Descrição', 'Código']),
+                Tbody(Tr(Td(LoadingSpinner())))
+              ]
+          })
+        )
       ]
   })
     }

@@ -1,1 +1,1 @@
-export const Tr = ({ children }) => `<tr>${children}</tr>`
+export const Tr = (children) => `<tr>${children}</tr>`
