@@ -42,7 +42,7 @@ export const App = () => {
             )
             return
           }
-          tbodyContent = fragment({ HTML: tbodyLines({ liList: filterNCMs(allNCMs, filter) }) })
+          tbodyContent = fragment(tbodyLines({liList: filterNCMs(allNCMs, filter)}))
         }
 
         updateComponent(document.querySelector('#root  table tbody'),
