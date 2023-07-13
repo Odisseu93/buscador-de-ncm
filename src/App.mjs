@@ -13,7 +13,7 @@ import { LoadingSpinner } from './components/LoadingSpinner/index.mjs'
 
 import { apiGetAllNCMs } from './services/getAllNCMs.mjs'
 
-import { WrapperHTML } from './helpers/WrapperHTML.mjs'
+import { fragment } from './helpers/fragment.mjs'
 import { updateComponent } from "./helpers/updateComponent.mjs"
 import { filterNCMs } from './helpers/filters/filterNCMs.mjs'
 
@@ -32,35 +32,27 @@ export const App = () => {
 
       if (allNCMs) {
         if (!filter) {
-          tbodyContent = WrapperHTML({
-            HTML: tbodyLines({ liList: allNCMs })
-          })
+          tbodyContent = fragment(tbodyLines({ liList: allNCMs }))
         } else {
           if (filterNCMs(allNCMs, filter).length === 0) {
 
             updateComponent(
               document.querySelector('#root  table tbody'),
-              WrapperHTML({
-                HTML: [Tbody(Tr(Td(NotFound())))]
-              })
+              fragment([Tbody(Tr(Td(NotFound())))])
             )
             return
           }
-          tbodyContent = WrapperHTML({ HTML: tbodyLines({ liList: filterNCMs(allNCMs, filter) }) })
+          tbodyContent = fragment({ HTML: tbodyLines({ liList: filterNCMs(allNCMs, filter) }) })
         }
 
         updateComponent(document.querySelector('#root  table tbody'),
-          WrapperHTML({
-            HTML: [Tbody(tbodyContent)]
-          })
+          fragment([Tbody(tbodyContent)])
         )
         return
       }
     }).catch(() => {
       updateComponent(document.querySelector('#root  table tbody'),
-        WrapperHTML({
-          HTML: [Tbody(Tr(Td(ApiRequestProblem())))]
-        })
+        fragment([Tbody(Tr(Td(ApiRequestProblem())))])
       )
     })
   }
@@ -79,22 +71,21 @@ export const App = () => {
 
   return `
     <main id="app"  style="${S.App.split('').join('')}"> 
-      ${WrapperHTML({
-    HTML:
-      [
-        Title(),
-        SearchInput({ onInput: handleSearchInput }),
-        Table(
-          WrapperHTML({
-            HTML:
-              [
-                Thead(['Descrição', 'Código']),
-                Tbody(Tr(Td(LoadingSpinner())))
-              ]
-          })
-        )
-      ]
-  })
+      ${fragment(
+        [
+          Title(),
+          SearchInput({ onInput: handleSearchInput }),
+          Table(
+            fragment({
+              HTML:
+                [
+                  Thead(['Descrição', 'Código']),
+                  Tbody(Tr(Td(LoadingSpinner())))
+                ]
+            })
+          )
+        ]
+      )
     }
     </main>
 `
