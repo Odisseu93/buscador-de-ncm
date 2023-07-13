@@ -1,7 +1,7 @@
 import * as S from './styles.mjs'
 
 export const LoadingSpinner = ()=> `    
-<div>
+<div id='loadingSpiner'>
   <div style="${S.loadingSpinner}"> </div>
 </div>
 `
