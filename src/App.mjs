@@ -11,11 +11,11 @@ import { ApiRequestProblem } from './components/ApiRequestProblem/index.mjs'
 import { NotFound } from './components/NotFound/index.mjs'
 import { LoadingSpinner } from './components/LoadingSpinner/index.mjs'
 
-import { apiGetAllNCMs } from './services/getAllNCMs.mjs'
+import { apiGetNCMsByDescOrCode } from './services/getNCMsByDescOrCode.mjs'
 
 import { fragment } from './helpers/fragment.mjs'
 import { updateComponent } from "./helpers/updateComponent.mjs"
-import { filterNCMs } from './helpers/filters/filterNCMs.mjs'
+import { thisHTMLElementExists } from './helpers/validate.mjs'
 
 export const App = () => {
 
@@ -25,54 +25,61 @@ export const App = () => {
     )
   }
 
-  const getAllNCMs = ({ filter = null }) => {
+  const getAllNCMs = (key) => {
 
-    apiGetAllNCMs().then((allNCMs) => {
+    if (!key) {
+      return updateComponent(
+        document.querySelector('#root table tbody'),
+        fragment([Tbody(Tr(Td('')))])
+      )
+    }
+
+    apiGetNCMsByDescOrCode(key).then((NCMList) => {
       let tbodyContent = ''
 
-      if (allNCMs) {
-        if (!filter) {
-          tbodyContent = fragment(tbodyLines({ liList: allNCMs }))
-        } else {
-          if (filterNCMs(allNCMs, filter).length === 0) {
-
-            updateComponent(
-              document.querySelector('#root  table tbody'),
-              fragment([Tbody(Tr(Td(NotFound())))])
-            )
-            return
-          }
-          tbodyContent = fragment(tbodyLines({liList: filterNCMs(allNCMs, filter)}))
-        }
-
-        updateComponent(document.querySelector('#root  table tbody'),
-          fragment([Tbody(tbodyContent)])
+      if (NCMList.length > 0) {
+        tbodyContent = fragment(tbodyLines({ liList: NCMList }))
+      } else {
+        updateComponent(
+          document.querySelector('#root  table tbody'),
+          fragment([Tbody(Tr(Td(NotFound())))])
         )
         return
       }
-    }).catch(() => {
+
+      updateComponent(document.querySelector('#root  table tbody'),
+        fragment([Tbody(tbodyContent)])
+      )
+      return
+    }
+    ).catch(() => {
       updateComponent(document.querySelector('#root  table tbody'),
         fragment([Tbody(Tr(Td(ApiRequestProblem())))])
       )
     })
   }
 
-  // first API request
-  getAllNCMs({ filter: null })
-
   const handleSearchInput = (e) => {
-    if (e.target.value === '') getAllNCMs({ filter: null })
-    else {
+
+    // prevent constant rendering
+    if(!thisHTMLElementExists('#loadingSpiner')) {
+      updateComponent(
+        document.querySelector('#root table tbody'),
+        fragment([Tbody(Tr(LoadingSpinner()))])
+        )
+    }
+
+    if (e.target.value === '') getAllNCMs(null)
+    else {     
       setTimeout(() => {
-        getAllNCMs({ filter: e.target.value })
-      }, 2000)
+        getAllNCMs(e.target.value)
+      }, 3000)
     }
   }
 
-
   const TableContent = `
   ${fragment([
-    Thead(['Descrição', 'Código']), Tbody(Tr(Td(LoadingSpinner())))
+    Thead(['Descrição', 'Código']), Tbody(Tr(Td('')))
   ])}
   `
 
@@ -82,7 +89,7 @@ export const App = () => {
         [
           Title(),
           SearchInput({ onInput: handleSearchInput }),
-          Table(TableContent)
+          Table(TableContent),
         ]
       )
     }
