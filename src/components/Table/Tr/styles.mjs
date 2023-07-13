@@ -1,0 +1,1 @@
+export const Tr =`height: 30px;`
