@@ -76,13 +76,12 @@ export const App = () => {
           Title(),
           SearchInput({ onInput: handleSearchInput }),
           Table(
-            fragment({
-              HTML:
+            fragment(
                 [
                   Thead(['Descrição', 'Código']),
                   Tbody(Tr(Td(LoadingSpinner())))
                 ]
-            })
+            )
           )
         ]
       )
