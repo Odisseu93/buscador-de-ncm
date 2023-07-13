@@ -69,20 +69,20 @@ export const App = () => {
     }
   }
 
+
+  const TableContent = `
+  ${fragment([
+    Thead(['Descrição', 'Código']), Tbody(Tr(Td(LoadingSpinner())))
+  ])}
+  `
+
   return `
     <main id="app"  style="${S.App}"> 
       ${fragment(
         [
           Title(),
           SearchInput({ onInput: handleSearchInput }),
-          Table(
-            fragment(
-                [
-                  Thead(['Descrição', 'Código']),
-                  Tbody(Tr(Td(LoadingSpinner())))
-                ]
-            )
-          )
+          Table(TableContent)
         ]
       )
     }
