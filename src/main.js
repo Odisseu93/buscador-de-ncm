@@ -9,7 +9,7 @@ import { fragment } from "./helpers/fragment.mjs"
 updateComponent(document.querySelector('#root'),
   fragment(
     [
-      `<style>${S.Main.split('').join('')}</style>`,
+      `<style>${S.Main}</style>`,
       App(),
       Footer(),
     ]
