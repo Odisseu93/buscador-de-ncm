@@ -70,7 +70,7 @@ export const App = () => {
   }
 
   return `
-    <main id="app"  style="${S.App.split('').join('')}"> 
+    <main id="app"  style="${S.App}"> 
       ${fragment(
         [
           Title(),

@@ -5,7 +5,7 @@ import * as S from './styles.mjs'
 export const Thead = (children) => {
  
   return `
-<thead style="${S.Thead.split('').join('')}">
+<thead style="${S.Thead}">
 ${Tr(children.map(textcontent => Th(textcontent)))}
 </thead>
 `}
